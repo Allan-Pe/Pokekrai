@@ -1,8 +1,8 @@
-import { Outlet } from "react-router";
+import { Outlet } from 'react-router';
 
 export const Layout = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-neutral-900">
       <Outlet />
     </div>
   );
