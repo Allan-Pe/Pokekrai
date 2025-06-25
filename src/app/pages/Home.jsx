@@ -1,0 +1,59 @@
+import { useEffect, useState } from 'react';
+import { getPokemonsByGen } from '@/app/services/api';
+import PokeCard from '@/app/components/PokeCard';
+import Select from '@/app/components/Select';
+
+export const Home = () => {
+  const [pokemons, setPokemons] = useState([]);
+  const [gen, setGen] = useState('0');
+  const [search, setSearch] = useState('');
+
+  const generations = [{ value: '0', label: 'Toutes générations' }];
+
+  for (let i = 1; i <= 9; i++) {
+    generations.push({
+      value: String(i),
+      label: `Génération ${i}`,
+    });
+  }
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getPokemonsByGen(gen);
+      setPokemons(data);
+    };
+    fetchData();
+  }, [gen]);
+
+  const filteredPokemons = pokemons.filter((p) =>
+    p.name.fr.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div>
+      <div className="px-8 py-6 text-white flex justify-end">
+        <Select
+          options={generations}
+          value={gen}
+          onChange={setGen}
+          className="w-min"
+        />
+      </div>
+      <div className="w-3/4 mx-auto">
+        <input
+          type="text"
+          placeholder="Rechercher"
+          className="w-full p-2 rounded-md mb-6 bg-zinc-900 text-white border border-gray-700"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredPokemons.map((pokemon) => (
+            <PokeCard key={pokemon.pokedex_id} pokemon={pokemon} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
