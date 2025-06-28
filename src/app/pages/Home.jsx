@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getPokemonsByGen } from '@/app/services/api';
-import PokeCard from '@/app/components/PokeCard';
-import Select from '@/app/components/Select';
+import PokeCard from '@/app/components/Cards/PokeCard';
+import Select from '@/app/components/Select'; // 👈 ton composant
+import { useNavigate } from 'react-router';
 
 export const Home = () => {
+  const navigate = useNavigate();
   const [pokemons, setPokemons] = useState([]);
   const [gen, setGen] = useState('0');
   const [search, setSearch] = useState('');
@@ -17,7 +19,6 @@ export const Home = () => {
     });
   }
 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await getPokemonsByGen(gen);
@@ -29,6 +30,10 @@ export const Home = () => {
   const filteredPokemons = pokemons.filter((p) =>
     p.name.fr.toLowerCase().includes(search.toLowerCase())
   );
+
+  const handleCardClick = (pokemon) => {
+    navigate(`/detail/${pokemon.pokedex_id}`);
+  };
 
   return (
     <div>
@@ -50,7 +55,11 @@ export const Home = () => {
         />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredPokemons.map((pokemon) => (
-            <PokeCard key={pokemon.pokedex_id} pokemon={pokemon} />
+            <PokeCard
+              key={pokemon.pokedex_id}
+              pokemon={pokemon}
+              onClick={() => handleCardClick(pokemon)}
+            />
           ))}
         </div>
       </div>
