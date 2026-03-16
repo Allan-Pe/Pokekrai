@@ -25,7 +25,7 @@ export const Detail = () => {
 
   return (
     <div className="w-3/4 justify-self-center py-10">
-      <div className="w-full absolute top-0 left-0 flex justify-between p-4">
+      <div className="w-full fixed top-0 left-0 flex justify-between p-4">
         <Button onClick={() => navigate('/')}>Accueil</Button>
         <div className="flex gap-2">
           <Button onClick={() => navigate(`/detail/${pokemon.pokedex_id - 1}`)}>
