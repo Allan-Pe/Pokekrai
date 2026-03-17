@@ -36,24 +36,24 @@ export const Home = () => {
   };
 
   return (
-    <div>
-      <div className="px-8 py-6 text-white flex justify-end">
-        <Select
-          options={generations}
-          value={gen}
-          onChange={setGen}
-          className="w-min"
-        />
-      </div>
+    <div className="min-h-screen">
       <div className="w-3/4 mx-auto">
-        <input
-          type="text"
-          placeholder="Rechercher"
-          className="w-full p-2 rounded-md mb-6 bg-zinc-900 text-white border border-gray-700"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="sticky top-0 z-20 bg-neutral-900/80 backdrop-blur-sm py-4 flex items-center gap-4">
+          <input
+            type="text"
+            placeholder="Rechercher"
+            className="flex-1 p-2 rounded-md bg-zinc-900 text-white border border-gray-700"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Select
+            options={generations}
+            value={gen}
+            onChange={setGen}
+            className="w-min"
+          />
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
           {filteredPokemons.map((pokemon) => (
             <PokeCard
               key={pokemon.pokedex_id}
