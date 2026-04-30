@@ -18,7 +18,15 @@ const GeneralInfoCard = ({ pokemon, className = '' }) => {
         </div>
 
         <div className="w-full justify-between flex">
-          <span>Taux de capture : </span> <span> {pokemon.catch_rate}%</span>
+          <span>Taux de capture : </span> <span> {pokemon.capture_rate}%</span>
+        </div>
+
+        <div className="w-full justify-between flex">
+          <span>Taille : </span> <span> {pokemon.height}m</span>
+        </div>
+
+        <div className="w-full justify-between flex">
+          <span>Poids : </span> <span> {pokemon.weight}kg</span>
         </div>
       </div>
     </BaseCard>

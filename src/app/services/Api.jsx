@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://tyradex.app/api/v1';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const getPokemonsByGen = async (gen = '0') => {
   try {
@@ -25,7 +25,6 @@ export const getPokemonsById = async (id) => {
 };
 
 export const getEvolution = async (pokemonId) => {
-  const BASE_URL = 'https://tyradex.app/api/v1/pokemon/';
   const visited = new Set();
 
   const buildNode = (name, sprite, condition = null, type = 'normal') => ({
@@ -37,7 +36,7 @@ export const getEvolution = async (pokemonId) => {
   });
 
   const fetchData = async (id) => {
-    const res = await fetch(`${BASE_URL}${id}`);
+    const res = await fetch(`${BASE_URL}/pokemon/${id}`);
     if (!res.ok) return null;
     return res.json();
   };

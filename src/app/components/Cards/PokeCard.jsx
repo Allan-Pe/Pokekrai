@@ -10,7 +10,7 @@ const PokeCard = ({ pokemon, onClick }) => {
         <img
           src={pokemon.sprites.regular}
           alt={pokemon.name.fr}
-          className="h-12 mt-[-15px]"
+          className="h-14 mt-[-15px]"
         />
       </div>
       <div className="text-center mt-2">
