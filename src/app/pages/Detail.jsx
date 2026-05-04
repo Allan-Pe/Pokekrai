@@ -45,10 +45,18 @@ export const Detail = () => {
       )}
       <div className="grid grid-cols-8 gap-5">
         <BaseCard className="col-span-2 content-center">
-          <img src={pokemon.sprites?.regular} alt={pokemon.name?.fr} />
+          <img
+            className="m-auto w-full"
+            src={pokemon.sprites?.regular}
+            alt={pokemon.name?.fr}
+          />
         </BaseCard>
         <BaseCard className="col-span-2 content-center">
-          <img src={pokemon.sprites?.shiny} alt={pokemon.name?.fr} />
+          <img
+            className="m-auto w-full"
+            src={pokemon.sprites?.shiny}
+            alt={pokemon.name?.fr}
+          />
         </BaseCard>
         <StatsCard pokemon={pokemon} className="col-span-4"></StatsCard>
         <WeaknessCard pokemon={pokemon} className="col-span-8"></WeaknessCard>
