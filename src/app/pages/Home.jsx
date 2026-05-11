@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getPokemonsByGen } from '@/app/services/api';
+import { getPokemonsByGen } from '@/app/services/Api';
 import PokeCard from '@/app/components/Cards/PokeCard';
-import Select from '@/app/components/Select'; // 👈 ton composant
+import Select from '@/app/components/Select';
 import { useNavigate } from 'react-router';
 
 export const Home = () => {

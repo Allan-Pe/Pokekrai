@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { getPokemonsById } from '@/app/services/api';
+import { getPokemonsById } from '@/app/services/Api';
 import BaseCard from '@/app/components/Cards/BaseCard';
 import StatsCard from '@/app/components/Cards/Details/StatsCard';
 import WeaknessCard from '@/app/components/Cards/Details/WeaknessCard';

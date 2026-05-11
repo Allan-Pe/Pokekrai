@@ -13,7 +13,7 @@ const WeaknessCard = ({ pokemon, className = '' }) => {
       className={className}
     >
       <div className="flex">
-        {/* Colonne Types */}
+        {/* Types column */}
         <div className="flex flex-col gap-2 pt-1">
           {pokemon.types.map((type) => (
             <Badge
@@ -24,7 +24,7 @@ const WeaknessCard = ({ pokemon, className = '' }) => {
           ))}
         </div>
 
-        {/* Colonne Faiblesses */}
+        {/* Weaknesses column */}
         <div className="flex-1 flex justify-end">
           <div className="grid grid-cols-6 divide-x divide-neutral-700 text-sm w-max right-0">
             {[0, 1, 2, 3, 4, 5].map((colIndex) => (
